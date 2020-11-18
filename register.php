@@ -16,7 +16,7 @@ include 'header.php';
 						<img class="camera-icon"
 						src="assets/camera.png" alt="camera">
 					</div>
-					<img src="assets/beard.png" style="width:200px;height:200px;"  class="img rounded-circle" alt="profile">
+					<img src="assets/beard.png" style="width:200px;height:200px;"  class="img rounded-circle" alt="profile" id="profile-image">
 				<small class="form-text text-black text-black-s0">Choose image</small>
 				<input type="file" name="profileUpload" class="form-control-file" id="upload-profile" >
 				</div>
@@ -39,11 +39,12 @@ include 'header.php';
 <div class="form-row my-4">
 <div class="col">
 	<input type="password" required name="password" id="password" class="form-control" placeholder="Password">
+	<small id="confirm_error" class="text-danger"></small>
 </div>
 </div>
 <div class="form-row my-4">
 <div class="col">
-	<input type="email" required name="confirm_pwd" id="confirm_pwd" class="form-control" placeholder="Confirm Password">
+	<input type="password" required name="confirm_pwd" id="confirm_pwd" class="form-control" placeholder="Confirm Password">
 </div>
 </div>
 <div class="form-check form-check-inline">
@@ -51,7 +52,7 @@ include 'header.php';
 <label for="aggrement" class="form-check-label font-ubuntu text-black-50"> I agree <a href="#s"> terms, conditions and policy</a>  (*)</label>
 </div>
 <div class="submit-btn text-center my-5">
-	<button type="submit" class="btn btn-warning rounded-bill text-dark px-5">Submit</button>
+	<button type="submit" class="btn btn-warning rounded-bill text-dark px-5">Continue</button>
 </div>
 				</form>
 			</div>
