@@ -1,6 +1,8 @@
 <?php
 include 'header.php';
-
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+	require('register-process.php');
+}
 ?>
 <section id="register">
 	<div class="row m-0">
@@ -16,29 +18,29 @@ include 'header.php';
 						<img class="camera-icon"
 						src="assets/camera.png" alt="camera">
 					</div>
-					<img src="assets/beard.png" style="width:200px;height:200px;"  class="img rounded-circle" alt="profile" id="profile-image">
+					<img src="assets/profile/beard.png" style="width:200px;height:200px;"  class="img rounded-circle" alt="profile" id="profile-image">
 				<small class="form-text text-black text-black-s0">Choose image</small>
-				<input type="file" name="profileUpload" class="form-control-file" id="upload-profile" >
+				<input type="file" form="reg-form" class="form-control-file" name="profileUpload" id="upload-profile">
 				</div>
 			</div>
 			<div class="d-flex justify-content-center">
-				<form action="register.php" method="post" enctpe="multipart/form-data" id="reg-form">
-<div class="form-row">
+<form action="register.php" method="post" enctype="multipart/form-data" id="reg-form">
+	<div class="form-row">
 	<div class="col">
-		<input type="text" name="firstName" id="firstName" class="form-control" placeholder="Firstname">
+		<input type="text" value="<?php echo isset($_POST['firstName']) ?  $_POST['firstName'] :  ''; ?>" name="firstName" id="firstName" class="form-control" placeholder="Firstname">
 	</div>
 	<div class="col">
-		<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Lastname">
+		<input type="text" name="lastName" value="<?php echo isset($_POST['lastName']) ?  $_POST['lastName'] :  ''; ?>" id="lastName" class="form-control" placeholder="Lastname">
 	</div>
 </div>
 <div class="form-row my-4">
 <div class="col">
-	<input type="email" required name="email" id="email" class="form-control" placeholder="Email">
+	<input type="email" required  name="email" value="<?php echo isset($_POST['email']) ?  $_POST['email'] :  ''; ?>" id="email" class="form-control" placeholder="Email">
 </div>
 </div>
 <div class="form-row my-4">
 <div class="col">
-	<input type="password" required name="password" id="password" class="form-control" placeholder="Password">
+	<input type="password" required name="password"  id="password" class="form-control" placeholder="Password">
 	<small id="confirm_error" class="text-danger"></small>
 </div>
 </div>
