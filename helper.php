@@ -1,5 +1,4 @@
 <?php
-
 function validateInputText($textValue){
 	if(!empty($textValue)){
 		$trim_text = trim($textValue);
@@ -44,4 +43,15 @@ function upload_profile($path, $file){
 
     // return default image
     return $path . $default;
+}
+
+function getUserInfo($connection, $userId){
+		$query = "SELECT firstName, lastName, email, profileImage FROM user WHERE userId=?";
+		$q = mysqli_stmt_init($connection);
+		mysqli_stmt_prepare($q, $query);
+		mysqli_stmt_bind_param($q, 's',$userId);
+		mysqli_stmt_execute($q);
+		$result = mysqli_stmt_get_result($q);
+		$row = mysqli_fetch_assoc($result);
+	  return empty($row) ? false : $row;
 }

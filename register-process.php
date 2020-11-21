@@ -17,10 +17,6 @@ if(empty($email)){
 	$error[] = "You forgot to enter your email";
 }
 $files = $_FILES['profileUpload'];
-echo "<pre>";
-print_r($_FILES);
-echo "</pre>";
-
 $profileImage = upload_profile('./assets/profile/', $files);
 
 $password = validateInputText($_POST['password']);
@@ -43,7 +39,10 @@ if(empty($error)){
 	mysqli_stmt_bind_param($q, 'sssss',$firstName, $lastName, $email, $hashed_password, $profileImage);
 	mysqli_stmt_execute($q);
 	if(mysqli_stmt_affected_rows($q) == 1){
-		echo "record inserted";
+		session_start();
+		$_SESSION['userId'] = mysqli_insert_id($connection);
+		header('location: login.php');
+		exit();
 	}else{
 		echo "Error while inserting" . mysqli_error($connection);
 	}

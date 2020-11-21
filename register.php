@@ -1,8 +1,10 @@
 <?php
-include 'header.php';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 	require('register-process.php');
 }
+
+include 'header.php';
+
 ?>
 <section id="register">
 	<div class="row m-0">
